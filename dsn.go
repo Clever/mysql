@@ -48,6 +48,7 @@ type Config struct {
 	TLSConfig        string            // TLS configuration name
 	tls              *tls.Config       // TLS configuration
 	Timeout          time.Duration     // Dial timeout
+	Keepalive        time.Duration     // Keepalive Period
 	ReadTimeout      time.Duration     // I/O read timeout
 	WriteTimeout     time.Duration     // I/O write timeout
 
@@ -503,6 +504,13 @@ func parseDSNParams(cfg *Config, params string) (err error) {
 		// Dial Timeout
 		case "timeout":
 			cfg.Timeout, err = time.ParseDuration(value)
+			if err != nil {
+				return
+			}
+
+		// TCP Keepalive Period
+		case "keepalive":
+			cfg.Keepalive, err = time.ParseDuration(value)
 			if err != nil {
 				return
 			}
