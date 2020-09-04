@@ -356,6 +356,16 @@ Default:        OS default
 Timeout for establishing connections, aka dial timeout. The value must be a decimal number with a unit suffix (*"ms"*, *"s"*, *"m"*, *"h"*), such as *"30s"*, *"0.5m"* or *"1m30s"*.
 
 
+##### `keepalive`
+
+```
+Type:           decimal number
+Default:        OS default
+```
+
+*Driver* side TCP keepalive period; how often to send a TCP packet to verify that the connection to the server is still open. The value must be a string of decimal numbers, each with optional fraction and a unit suffix ( *"ms"*, *"s"*, *"m"*, *"h"* ), such as *"30s"*, *"0.5m"* or *"1m30s"*.
+
+
 ##### `tls`
 
 ```
